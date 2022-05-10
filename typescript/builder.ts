@@ -1,13 +1,17 @@
 // https://sourcemaking.com/design_patterns/builder
+// to run: ts-node typescript/builder.ts
 
 class Burger {
-    meat: boolean
-    buns: boolean
-    cheese: boolean
-    sauces: boolean
+    meat: boolean = false
+    buns: boolean = false
+    cheese: boolean = false
+    sauces: boolean = false
 
-    constructor() {
-
+    constructor(meat: boolean, buns: boolean, cheese: boolean, sauces: boolean) {
+        this.meat = meat
+        this.buns = buns
+        this.cheese = cheese
+        this.sauces = sauces
     }
 }
 
@@ -17,10 +21,10 @@ type Toy = "Batman" | "Superman"
 
 
 class HappyMeal {
-    burger: Burger; 
-    fries: Fries;
-    drink: Drink;
-    toy: Toy;
+    burger?: Burger = undefined 
+    fries?: Fries = undefined
+    drink?: Drink = undefined
+    toy?: Toy = undefined
 
     addBurger(burger: Burger) {
         this.burger = burger
@@ -64,3 +68,4 @@ happyMeal.addBurger(burger)
 if(fries) happyMeal.addFries(fries)
 
 happyMeal.addToy('Superman')
+console.log(JSON.stringify(happyMeal, undefined, '\t'))
